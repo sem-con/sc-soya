@@ -1,0 +1,16 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@import": "https://ns.ownyourdata.eu/ns/soca-context.json",
+    "@base": "https://soca.data-container.net/zQmRe6ZmxUETY2rm8Dg9CNBcdBh8kqe9aqeoXnfigAUKtuP/",
+    "company": "https://soca.data-container.net/zQmTJCXJo54739GMGtgVjteppudStrheLvNKDUSterAYk29/"
+  },
+  "@graph": [
+    { "@id": "OverlayLabel", "@type": "OverlayLabel", "onBase": "company:Company" },
+    { "@id": "company:LegalName", "label": { "en": "Legal Name", "de": "Gesetzlicher Name" } },
+    { "@id": "company:Address", "label": { "en": "Address", "de": "Adresse" } },
+    { "@id": "company:ZipCode", "label": { "en": "Zip Code", "de": "Postleitzahl" } },
+    { "@id": "company:City", "label": { "en": "City", "de": "Stadt" } },
+    { "@id": "company:Country", "label": { "en": "Country", "de": "Land" } }
+  ]
+}

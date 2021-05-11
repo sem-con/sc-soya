@@ -1,0 +1,23 @@
+{
+  "@context": {
+    "@version": 1.1,    
+    "@import": "https://ns.ownyourdata.eu/ns/soca-context.json",
+    "@base": "https://soca.data-container.net/zQmXNXuVa7yQkHhA89xPLA8bnkpQA77d9sURBJWkQgTJmyn/",
+    "Person": "base:Person",
+    "FirstName": "base:FirstName",
+    "LastName": "base:LastName",
+    "Gender": "base:Gender",
+    "DateOfBirth": "base:DateOfBirth",
+    "Employer": "base:Employer"
+  },
+  "@graph": [
+    { "@id": "", "import": "https://soca.data-container.net/zQmTJCXJo54739GMGtgVjteppudStrheLvNKDUSterAYk29/" },
+    { "@id": "Person", "subClassOf": "Base" },
+    { "@id": "FirstName", "@type": "owl:DatatypeProperty", "domain": "Person", "range": "xsd:string" },
+    { "@id": "LastName", "@type": "owl:DatatypeProperty", "domain": "Person", "range": "xsd:string" },
+    { "@id": "Gender", "@type": "owl:DatatypeProperty", "domain": "Person", "range": "xsd:string" },
+    { "@id": "DateOfBirth", "@type": "owl:DatatypeProperty", "domain": "Person", "range": "xsd:string" },
+    { "@id": "Employer", "@type": "owl:ObjectProperty", "domain": "Person", 
+             "range": "https://soca.data-container.net/zQmTJCXJo54739GMGtgVjteppudStrheLvNKDUSterAYk29/Company" }
+  ]
+}

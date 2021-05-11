@@ -1,0 +1,21 @@
+{
+  "@context": {
+    "@version": 1.1,    
+    "@import": "https://ns.ownyourdata.eu/ns/soca-context.json",
+    "@base": "https://soca.data-container.net/zQmTJCXJo54739GMGtgVjteppudStrheLvNKDUSterAYk29/",
+    "Company": "base:Company",
+    "LegalName": "base:LegalName",
+    "Address": "base:Address",
+    "ZipCode": "base:ZipCode",
+    "City": "base:City",
+    "Country": "base:Country"
+  },
+  "@graph": [
+    { "@id": "Company", "subClassOf": "soca:Base" },
+    { "@id": "LegalName", "@type": "owl:DatatypeProperty", "domain": "Company", "range": "xsd:string" },
+    { "@id": "Address", "@type": "owl:DatatypeProperty", "domain": "Company", "range": "xsd:string" },
+    { "@id": "ZipCode", "@type": "owl:DatatypeProperty", "domain": "Company", "range": "xsd:string" },
+    { "@id": "City", "@type": "owl:DatatypeProperty", "domain": "Company", "range": "xsd:string" },
+    { "@id": "Country", "@type": "owl:DatatypeProperty", "domain": "Company", "range": "xsd:string" }
+  ]
+}
