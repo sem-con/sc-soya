@@ -194,7 +194,7 @@ echo '[{
     "baseCompany":"https://soya.data-container.net/zQmZ3ydc1U7dfMKHCA47dGuTk6z2ckiC5PxFRynXUdMjbWq/"
   },
   "@graph":[{
-    "@id": "https://playground.data-container.net/ld/zQmY8kqmnpsiznfncYmdphiVvf9beRzC9A4paU5iM3cwyCZ",
+    "@id": "https://playground.data-container.net/ld/zQmXdkfT5rFJvg7XgHrojGjXkLV6NQpaxDFnRTFCtKbyJmm",
     "@type":"basePerson:Person",
     "basePerson:FirstName": "Fajar",
     "basePerson:LastName": "Ekaputra",
@@ -211,15 +211,14 @@ echo '[{
       "baseCompany:Country": "Austria"
     }]
   }]
-}
-,
-  "dri": "zQmRZew1SCCoo26K2wFLXTJJparDund49HivE8eWhbMLJny",
+},
+  "dri": "zQmXdkfT5rFJvg7XgHrojGjXkLV6NQpaxDFnRTFCtKbyJmm",
   "schema_dri": "zQmbx8H9Bgci3uYXa1cHLk2uqScsV251j7k5BQRgjdM4zYY"
 }]' | curl -H "Content-Type: application/json" -d @- \
     -X POST https://playground.data-container.net/api/data
 
 # read person #1 instance
-curl https://playground.data-container.net/ld/zQmRZew1SCCoo26K2wFLXTJJparDund49HivE8eWhbMLJny
+curl https://playground.data-container.net/ld/zQmXdkfT5rFJvg7XgHrojGjXkLV6NQpaxDFnRTFCtKbyJmm
 
 # Person #2 Instance
 echo '[{
@@ -230,7 +229,7 @@ echo '[{
     "baseCompany":"https://soya.data-container.net/zQmZ3ydc1U7dfMKHCA47dGuTk6z2ckiC5PxFRynXUdMjbWq/"
   },
   "@graph":[{
-    "@id": "https://playground.data-container.net/ld/zQmY8kqmnpsiznfncYmdphiVvf9beRzC9A4paU5iM3cwyCZ",
+    "@id": "https://playground.data-container.net/ld/zQmQjn2vhRa8QAH1VTyEAhG8GzCzAKgdegq36jV6GgCPFyU",
     "@type":"basePerson:Person",
     "basePerson:FirstName": "Christoph",
     "basePerson:LastName": "Fabianek",
@@ -246,11 +245,11 @@ echo '[{
     }]
   }]
 },
-  "dri": "zQmc1HNU9xbAeXRALnVKWZQJbScoK7picWHtDuEzMyda9Cj",
+  "dri": "zQmQjn2vhRa8QAH1VTyEAhG8GzCzAKgdegq36jV6GgCPFyU",
   "schema_dri": "zQmbx8H9Bgci3uYXa1cHLk2uqScsV251j7k5BQRgjdM4zYY"
 }]' | curl -H "Content-Type: application/json" -d @- \
     -X POST https://playground.data-container.net/api/data
 
 # read person #2 instance
-curl https://playground.data-container.net/ld/zQmc1HNU9xbAeXRALnVKWZQJbScoK7picWHtDuEzMyda9Cj
+curl https://playground.data-container.net/ld/zQmQjn2vhRa8QAH1VTyEAhG8GzCzAKgdegq36jV6GgCPFyU
 
