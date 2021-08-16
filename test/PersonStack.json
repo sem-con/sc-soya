@@ -1,15 +1,17 @@
-{  
+{
   "@context": {
     "@version": 1.1,
-    "@import": "https://ns.ownyourdata.eu/ns/soca-context.json",
-    "@base": "https://soca.data-container.net/zQmYt2JqW3hCWdmykAriHDVbnahKEcwPN2CSbQworYsWoLW/"
+    "@import": "https://ns.ownyourdata.eu/ns/soya-context.json",
+    "@base": "https://soya.data-container.net/zQmSqfvJrhxWxdvJmomX4tUQEhWf4tnDjJBhPtLfJw1NJKQ"
   },
   "@id": "",
   "label": { "en": "Person Record" },
   "description": { "en": "A basic schema to describe a person" },
   "import": [
-    "https://soca.data-container.net/zQmXNXuVa7yQkHhA89xPLA8bnkpQA77d9sURBJWkQgTJmyn/Person", 
-    "https://soca.data-container.net/zQmWsC1QviyDAAfm99JZn74hRwKxoR3L56g4jCykDTPTyaG/", 
-    "https://soca.data-container.net/zQmRe6ZmxUETY2rm8Dg9CNBcdBh8kqe9aqeoXnfigAUKtuP/"
+    "https://soya.data-container.net/zQmQgRrvC5kpPkTMn6s9aBGqBGK2bqKgS8vX98WyMHQoWHK/Person",
+    "https://soya.data-container.net/zQmeLoQn12oh7DW36FaaYzF8ED9prfGcrbEAHZAwwoiGxb5/Company/Annotation",
+    "https://soya.data-container.net/zQmVR1AxKjCebCBnK9DN8G6DccKykX3uU4shRq8Maf51vpY/Person/Annotation",
+    "https://soya.data-container.net/zQmUczrX3u2h4iU1nMzWFdp9BkhGU1qnzZcZVWnJ3qtxowb/Person/Transformation_JSON2RDF",
+    "https://soya.data-container.net/zQmSbPNzuFpTZ5hem4Ef34UBHdwcbxubH2nwmZ5sZsWJtjq/Person/Transformation_RDF2JSON"
   ]
 }

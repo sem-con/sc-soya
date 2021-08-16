@@ -1,0 +1,12 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@import": "https://ns.ownyourdata.eu/ns/soya-context.json",
+    "@base": "https://soya.data-container.net/zQmSbPNzuFpTZ5hem4Ef34UBHdwcbxubH2nwmZ5sZsWJtjq",
+    "person": "https://soya.data-container.net/zQmQgRrvC5kpPkTMn6s9aBGqBGK2bqKgS8vX98WyMHQoWHK"
+  },
+  "@graph": [
+    { "@id": "OverlayLabel", "@type": "OverlayLabel", "onBase": "person:Person" },
+    { "@id": "transform_rdf2json", "jq_transform": "{\"content\":{\"FirstName\":.[\"@graph\"][0][\"basePerson:FirstName\"],\"LastName\":.[\"@graph\"][0][\"basePerson:LastName\"],\"Gender\":.[\"@graph\"][0][\"basePerson:Gender\"],\"DateOfBirth\":.[\"@graph\"][0][\"basePerson:DateOfBirth\"]},\"schema_dri\":\"zQmQgRrvC5kpPkTMn6s9aBGqBGK2bqKgS8vX98WyMHQoWHK\"}" }
+  ]
+}

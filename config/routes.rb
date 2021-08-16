@@ -83,7 +83,9 @@ Rails.application.routes.draw do
     match 'log/:did', to: 'logs#create', via: 'post', constraints: {did: /.*/}
     match 'doc/:did', to: 'dids#delete', via: 'delete', constraints: {did: /.*/}
 
-    match 'ld/:dri',    to: 'lds#read',  via: 'get', constraints: {dri: /.*/}
+    match 'ld/:dri/:name/:sub', to: 'lds#read',  via: 'get', constraints: {dri: /.*/}
+	match 'ld/:dri/:name',      to: 'lds#read',  via: 'get', constraints: {dri: /.*/}
+	match 'ld/:dri',            to: 'lds#read',  via: 'get', constraints: {dri: /.*/}
 
     match ':dri/:name/:sub', to: 'dris#read', via: 'get', constraints: {dri: /.*/}
     match ':dri/:name',      to: 'dris#read', via: 'get', constraints: {dri: /.*/}

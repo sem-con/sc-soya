@@ -1,8 +1,8 @@
 {
   "@context": {
     "@version": 1.1,    
-    "@import": "https://ns.ownyourdata.eu/ns/soca-context.json",
-    "@base": "https://soca.data-container.net/zQmXNXuVa7yQkHhA89xPLA8bnkpQA77d9sURBJWkQgTJmyn/",
+    "@import": "https://ns.ownyourdata.eu/ns/soya-context.json",
+    "@base": "https://soya.data-container.net/zQmQgRrvC5kpPkTMn6s9aBGqBGK2bqKgS8vX98WyMHQoWHK",
     "Person": "base:Person",
     "FirstName": "base:FirstName",
     "LastName": "base:LastName",
@@ -11,13 +11,13 @@
     "Employer": "base:Employer"
   },
   "@graph": [
-    { "@id": "", "import": "https://soca.data-container.net/zQmTJCXJo54739GMGtgVjteppudStrheLvNKDUSterAYk29/" },
+    { "@id": "", "import": "https://soya.data-container.net/zQmP45svxQxBRPUauVG83REXo3EYycsRbydts6Z97ejj99K/Company" },
     { "@id": "Person", "subClassOf": "Base" },
     { "@id": "FirstName", "@type": "owl:DatatypeProperty", "domain": "Person", "range": "xsd:string" },
     { "@id": "LastName", "@type": "owl:DatatypeProperty", "domain": "Person", "range": "xsd:string" },
     { "@id": "Gender", "@type": "owl:DatatypeProperty", "domain": "Person", "range": "xsd:string" },
     { "@id": "DateOfBirth", "@type": "owl:DatatypeProperty", "domain": "Person", "range": "xsd:string" },
-    { "@id": "Employer", "@type": "owl:ObjectProperty", "domain": "Person", 
-             "range": "https://soca.data-container.net/zQmTJCXJo54739GMGtgVjteppudStrheLvNKDUSterAYk29/Company" }
+    { "@id": "Employer", "@type": "owl:ObjectProperty", "domain": "Person", "range": "https://soya.data-container.net/zQmP45svxQxBRPUauVG83REXo3EYycsRbydts6Z97ejj99K/Company"
+    }
   ]
 }
