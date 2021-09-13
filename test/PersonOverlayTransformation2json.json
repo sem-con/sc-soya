@@ -2,7 +2,7 @@
   "@context": {
     "@version": 1.1,
     "@import": "https://ns.ownyourdata.eu/ns/soya-context.json",
-    "@base": "https://soya.data-container.net/zQmSbPNzuFpTZ5hem4Ef34UBHdwcbxubH2nwmZ5sZsWJtjq",
+    "@base": "https://soya.data-container.net/zQmcTebbHvizS5N1hruJGRDEFZWTLNmuc4kEM5py53aAjXX",
     "person": "https://soya.data-container.net/zQmQgRrvC5kpPkTMn6s9aBGqBGK2bqKgS8vX98WyMHQoWHK"
   },
   "@graph": [

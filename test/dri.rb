@@ -8,13 +8,18 @@ require 'Multihashes'
 require 'digest'
 require 'json/canonicalization'
 require 'optparse'
+require 'uri'
 
 def checkDRI(val)
     pos = (val =~ /zQm[1-9A-HJ-NP-Za-km-z]{44}/)
     if pos.nil?
       return val
     else
-      return val[pos..(pos+46)]
+      if val =~ URI::DEFAULT_PARSER.regexp[:ABS_URI]
+        return val[pos..(pos+46)]
+      else
+        return val
+      end
     end
 end
 
@@ -56,11 +61,13 @@ opt_parser = OptionParser.new do |opt|
 end
 opt_parser.parse!
 
+# parse input
 input = []
 ARGF.each_line { |line| input << line }
 input = input.join("\n")
 raw = JSON.parse(input)
 
+# sanitize input
 if options[:doc_type].to_s == "0"
 	# document is a layer (base or overlay)
 	raw["@context"].delete("@base") rescue nil
@@ -73,4 +80,6 @@ if options[:verbose]
   puts "Raw input"
   puts raw.to_s
 end
+
+# hash and encode
 puts Multibases.pack("base58btc", Multihashes.encode(Digest::SHA256.digest(raw), "sha2-256").unpack('C*')).to_s
