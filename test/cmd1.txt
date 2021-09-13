@@ -32,8 +32,9 @@ cat PersonOverlayTransformation2json.json | jq '{"content": . , "dri": .["@conte
 cat PersonStack.json | ./dri.rb
 cat PersonStack.json | jq '{"content": . , "dri": .["@context"]["@base"] | split("/") | .[3] }' | curl -H "Content-Type: application/json" -d @- -X POST https://soya.data-container.net/api/data
 
-cat Person1.json | ./dri.rb -i
-cat Person1.json | jq '{"content": . , "dri": "zQmer4vJKdxcmnfnJdEsy7WTBX3f9DGY7SMk5NCtQzg9G4o", "schema_dri": "zQmQgRrvC5kpPkTMn6s9aBGqBGK2bqKgS8vX98WyMHQoWHK"}' | curl -H "Content-Type: application/json" -d @- -X POST https://playground.data-container.net/api/data
+cat Person1a.json | ./dri.rb -i
+cat Person1.json | jq '{"content": . , "dri": "zQmevLBmm1iD1nwDw47tigBMZMKzYXvCMW87ePGGpJAregM", "schema_dri": "zQmQgRrvC5kpPkTMn6s9aBGqBGK2bqKgS8vX98WyMHQoWHK"}' | curl -H "Content-Type: application/json" -d @- -X POST https://playground.data-container.net/api/data
+curl -X DELETE https://playground.data-container.net/api/data/zQmYuCUZJvPq7CujQA7CuwNzR8osN6WVjpsxuVxLiNkZNu3?p=dri
 
 cat Person2.json | ./dri.rb -i
 cat Person2.json | jq '{"content": . , "dri": "zQmYuCUZJvPq7CujQA7CuwNzR8osN6WVjpsxuVxLiNkZNu3", "schema_dri": "zQmQgRrvC5kpPkTMn6s9aBGqBGK2bqKgS8vX98WyMHQoWHK"}' | curl -H "Content-Type: application/json" -d @- -X POST https://playground.data-container.net/api/data
