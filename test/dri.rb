@@ -10,7 +10,7 @@ require 'json/canonicalization'
 require 'optparse'
 
 def checkDRI(val)
-    pos = (val =~ /[1-9A-HJ-NP-Za-km-z]{47}/)
+    pos = (val =~ /zQm[1-9A-HJ-NP-Za-km-z]{44}/)
     if pos.nil?
       return val
     else
