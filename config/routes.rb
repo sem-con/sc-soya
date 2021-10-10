@@ -67,6 +67,9 @@ Rails.application.routes.draw do
 			# OYDID handling
 			match 'oydid/init',        to: 'oydids#init',         via: 'post'
 			match 'oydid/token',       to: 'oydids#token',        via: 'post'
+
+			# SOyA specific
+			match 'soya/similar',      to: 'soyas#similar',       via: 'post'
 		end
 	end
 

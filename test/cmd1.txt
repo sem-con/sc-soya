@@ -11,10 +11,10 @@ cat CompanyStack.json | ./dri.rb
 cat CompanyStack.json | jq '{"content": . , "dri": .["@context"]["@base"] | split("/") | .[3] }' | curl -H "Content-Type: application/json" -d @- -X POST https://soya.data-container.net/api/data
 
 cat Company1.json | ./dri.rb -i
-cat Company1.json | jq '{"content": . , "dri": "zQmdUzxDdJDWWRUPJDKjEYWBSbXdp515zQygHWyVq2frJvH", "schema_dri": "zQmP45svxQxBRPUauVG83REXo3EYycsRbydts6Z97ejj99K"}' | curl -H "Content-Type: application/json" -d @- -X POST https://playground.data-container.net/api/data
+cat Company1.json | jq '{"content": . , "dri": "zQmbo18LBayTSqQmXgdy9U41RFSSiivXybCjwRWPxCisGG3", "schema_dri": "zQmP45svxQxBRPUauVG83REXo3EYycsRbydts6Z97ejj99K"}' | curl -H "Content-Type: application/json" -d @- -X POST https://playground.data-container.net/api/data
 
 cat Company2.json | ./dri.rb -i
-cat Company2.json | jq '{"content": . , "dri": "zQmQ4aaQFXDxKjMEQZUosBof1fHurALRT3xzfbDyGFwxsw1", "schema_dri": "zQmP45svxQxBRPUauVG83REXo3EYycsRbydts6Z97ejj99K"}' | curl -H "Content-Type: application/json" -d @- -X POST https://playground.data-container.net/api/data
+cat Company2.json | jq '{"content": . , "dri": "zQmX56cwrNhuXxCtRo77fNabBsCuhpgqhs1DCjc1cikiKzx", "schema_dri": "zQmP45svxQxBRPUauVG83REXo3EYycsRbydts6Z97ejj99K"}' | curl -H "Content-Type: application/json" -d @- -X POST https://playground.data-container.net/api/data
 
 
 cat PersonBase.json | ./dri.rb 
@@ -32,11 +32,11 @@ cat PersonOverlayTransformation2json.json | jq '{"content": . , "dri": .["@conte
 cat PersonStack.json | ./dri.rb
 cat PersonStack.json | jq '{"content": . , "dri": .["@context"]["@base"] | split("/") | .[3] }' | curl -H "Content-Type: application/json" -d @- -X POST https://soya.data-container.net/api/data
 
-cat Person1a.json | ./dri.rb -i
-cat Person1.json | jq '{"content": . , "dri": "zQmevLBmm1iD1nwDw47tigBMZMKzYXvCMW87ePGGpJAregM", "schema_dri": "zQmQgRrvC5kpPkTMn6s9aBGqBGK2bqKgS8vX98WyMHQoWHK"}' | curl -H "Content-Type: application/json" -d @- -X POST https://playground.data-container.net/api/data
-curl -X DELETE https://playground.data-container.net/api/data/zQmYuCUZJvPq7CujQA7CuwNzR8osN6WVjpsxuVxLiNkZNu3?p=dri
+cat Person1.json | ./dri.rb -i
+cat Person1.json | jq '{"content": . , "dri": "zQmRo5hrx6jDas3myLfm9ZhX8faqcFPNcibna49NgDaGrBg", "schema_dri": "zQmPN8kNDfbSuwJFS4ietZhV6s6AYY2jfdJ2KAXA3eWXr4K"}' | curl -H "Content-Type: application/json" -d @- -X POST https://playground.data-container.net/api/data
+curl -X DELETE https://playground.data-container.net/api/data/zQmXdxsFEFD6Ph8Fw94Vpqn53e7sLqYxQCj7snnCWYpQH8R?p=dri
 
-curl -X DELETE https://soya.data-container.net/api/data/zQmSqfvJrhxWxdvJmomX4tUQEhWf4tnDjJBhPtLfJw1NJKQ?p=dri
+curl -X DELETE https://soya.data-container.net/api/data/zQmVR1AxKjCebCBnK9DN8G6DccKykX3uU4shRq8Maf51vpY?p=dri
 
 cat Person2.json | ./dri.rb -i
-cat Person2.json | jq '{"content": . , "dri": "zQmXdxsFEFD6Ph8Fw94Vpqn53e7sLqYxQCj7snnCWYpQH8R", "schema_dri": "zQmQgRrvC5kpPkTMn6s9aBGqBGK2bqKgS8vX98WyMHQoWHK"}' | curl -H "Content-Type: application/json" -d @- -X POST https://playground.data-container.net/api/data
+cat Person2.json | jq '{"content": . , "dri": "zQmVMBRZeivzuGcxh2T4S4G9YEBcGwi2uun837NBPsr8gCW", "schema_dri": "zQmPN8kNDfbSuwJFS4ietZhV6s6AYY2jfdJ2KAXA3eWXr4K"}' | curl -H "Content-Type: application/json" -d @- -X POST https://playground.data-container.net/api/data

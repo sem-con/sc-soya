@@ -2,7 +2,7 @@
   "@context": {
     "@version": 1.1,    
     "@import": "https://ns.ownyourdata.eu/ns/soya-context.json",
-    "@base": "https://soya.data-container.net/zQmQgRrvC5kpPkTMn6s9aBGqBGK2bqKgS8vX98WyMHQoWHK",
+    "@base": "https://soya.data-container.net/zQmPN8kNDfbSuwJFS4ietZhV6s6AYY2jfdJ2KAXA3eWXr4K",
     "Person": "base:Person",
     "FirstName": "base:FirstName",
     "LastName": "base:LastName",

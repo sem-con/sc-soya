@@ -2,7 +2,7 @@
   "@context": {
     "@version": 1.1,
     "@import": "https://ns.ownyourdata.eu/ns/soya-context.json",
-    "@base": "https://soya.data-container.net/zQmR1eP8qaXZLWHq3LPtd8uQfhuLiouTuoQzdyGguoRDD5v"
+    "@base": "https://soya.data-container.net/zQmbgbAHfWrEuf2DSMLuFkz32fHurP817dXCodepYejrSFc"
   },
   "@id": "",
   "label": { "en": "Company Record" },

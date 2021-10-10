@@ -1,0 +1,43 @@
+soya template base
+# print simple yml template to create a base layer (e.g. person.yml in next step)
+
+cat person.yml | soya init > person.jsonld
+# create JSON-LD document from yml (should be equal to: person.jsonld_check)
+
+cat person.jsonld | soya similar
+# searches for similar definitions at default repository https://soya.data-container.net
+# expected output:
+# 100% Person_v1 - DRI: zQm123
+
+soya pull Person_v1
+# downloads https://soya.data-container.net/Person_v1 and creates file Person_v1.jsonld
+# output to STDOUT "downloaded Person_v1 - DRI: zQm123"
+
+soya overlays Person_v1
+# list existing overlays for given base at repo (default: https://soya.data-container.net)
+# write to STDOUT (maybe also option to write as JSON-LD?):
+# Overlays for Person_v1
+# - Person_Annotation (Annotation) - DRI: zQm456
+# - Person_Check (Validation) - DRI: zQm789
+# - Person_JSON2RDF (Transformation) - DRI: zQm0ab
+
+soya template alignment
+# print yml template to create an alignment layer (e.g. person_alignment.yml in next step)
+
+cat person_alignment.yml | soya init > person_alignment.jsonld
+# create JSON-LD document from yaml (should be equal to: person_alignment.jsonld_check)
+
+cat person_alignment.jsonld | soya push
+# uploads to SOyA repository (default: https://soya.data-container.net)
+# create https://soya.data-container.net/person_alignment
+# and https://soya.data-container.net/zQmcde
+
+soya overlays Person_v1
+# should now additionally list alignment overlay
+# - Person_Annotation (Annotation) - DRI: zQm456
+# - Person_Check (Validation) - DRI: zQm789
+# - Person_JSON2RDF (Transformation) - DRI: zQm0ab
+# - person_alignment (Alignment) - DRI: zQmcde
+
+cat raw_data.json | curl -H "Content-Type: application/json" -d @- -X POST https://playground.data-container.net/api/data?transform=zQm0ab
+# takes raw_data.json, transforms it via defintion in Person_JSON2RDF, and stores it in SemCon with schema_dri from Person_v1 (DRI: zQm123)

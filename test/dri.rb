@@ -2,7 +2,6 @@
 # encoding: utf-8
 
 # gem install 'json-canonicalization'
-
 require 'Multibases'
 require 'Multihashes'
 require 'digest'
@@ -47,7 +46,6 @@ end
 options = { }
 options[:verbose] = false
 opt_parser = OptionParser.new do |opt|
-
   options[:doc_type] = 0 # 0 = layer
   opt.on("-l", "--layer", "document is a layer (base or overlay)") do |v|
     options[:doc_type] = 0

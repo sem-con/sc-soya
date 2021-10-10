@@ -4,7 +4,7 @@
     "@base":"https://soya.data-container.net/zQmP45svxQxBRPUauVG83REXo3EYycsRbydts6Z97ejj99K"
   },
   "@graph":[{
-    "@id": "https://playground.data-container.net/ld/zQmQ4aaQFXDxKjMEQZUosBof1fHurALRT3xzfbDyGFwxsw1",
+    "@id": "https://playground.data-container.net/ld/zQmX56cwrNhuXxCtRo77fNabBsCuhpgqhs1DCjc1cikiKzx",
     "@type":"Company",
     "LegalName":"TU Wien",
     "Address":"Karlsplatz 13",
