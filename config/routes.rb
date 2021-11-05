@@ -90,6 +90,7 @@ Rails.application.routes.draw do
 	match 'ld/:dri/:name',      to: 'lds#read',  via: 'get', constraints: {dri: /.*/}
 	match 'ld/:dri',            to: 'lds#read',  via: 'get', constraints: {dri: /.*/}
 
+    match ':dri/info',       to: 'dris#info', via: 'get', constraints: {dri: /.*/}
     match ':dri/:name/:sub', to: 'dris#read', via: 'get', constraints: {dri: /.*/}
     match ':dri/:name',      to: 'dris#read', via: 'get', constraints: {dri: /.*/}
     match ':dri',            to: 'dris#read', via: 'get', constraints: {dri: /.*/}

@@ -1,0 +1,99 @@
+module DataWriteHelper
+    include BaseHelper
+
+    def writeData(content, input, provenance, read_hash)
+        # write data to container store
+        new_items = []
+
+        if input.class == String
+            if input == ""
+                render plain: "",
+                       status: 500
+                return
+            end
+            input = [input]
+        end
+
+        # skip writing provenance
+
+        if input.is_a?(Array)
+            my_params = input.drop(1).first
+        else
+            my_params = input
+        end
+        if my_params.nil?
+            my_params = {}
+        end
+
+        # write data of new record
+        if input.class == Hash
+            input = [input]
+        end
+
+        Store.transaction do
+            input.each do |item|
+                mime_type = "application/json"
+                if item["content"].to_s != ""
+                    item = item["content"]
+                end
+                if item.class == String
+                    item = JSON.parse(item)
+                end
+
+puts "Item ============"
+puts item.to_json
+
+puts "write current record"
+                soya_name = getSoyaName(item)
+puts "name: " + soya_name.to_s
+                @record = Store.find_by_dri(soya_name)
+                if soya_name.to_s == "" || @record.nil?
+                    @record = Store.new(
+                        item: item.to_json, 
+                        dri: soya_name,
+                        soya_name: soya_name)
+                    @record.save
+                else
+                    @record.update_attributes(item: item.to_json)
+                end
+                new_items << @record.id
+
+puts "write DRIzed record"
+                dri_item = createDriVersion(item)
+                dri = calculateDri(item)
+puts "DRI: " + dri.to_s
+
+                @record = Store.find_by_dri(dri)
+                if dri.nil? || @record.nil?
+                    @record = Store.new(
+                        item: dri_item.to_json, 
+                        dri: dri,
+                        soya_name: soya_name)
+                    @record.save
+                else
+                    @record.update_attributes(item: dri_item.to_json, soya_name: soya_name)
+                end
+                new_items << @record.id
+                
+            end
+        end
+
+        # create receipt information
+        receipt_json = createReceipt(read_hash, new_items, Time.now.utc)
+        receipt_hash = Digest::SHA256.hexdigest(receipt_json.to_json)
+        revocation_key = SecureRandom.hex(16).to_s
+
+        # write Log
+        createLog({
+            "type": "write",
+            "scope": new_items.to_s})
+
+        render json: {"receipt": receipt_hash.to_s,
+                      "serviceEndpoint": ENV["SERVICE_ENDPOINT"].to_s,
+                      "read_hash": read_hash,
+                      "revocationKey": revocation_key,
+                      "processed": new_items.count,
+                      "responses": new_items.map{|e| {"id": e, "status":200}}},
+               status: 200
+    end
+end

@@ -1,4 +1,4 @@
-FROM semcon/sc-base:graphdb
+FROM semcon/sc-base:latest
 MAINTAINER "Christoph Fabianek" christoph@ownyourdata.eu
 
 WORKDIR /usr/src/app
@@ -9,8 +9,13 @@ RUN mkdir -p $RAILS_ROOT/tmp/pids && \
   		libsodium-dev \
 		build-essential && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+COPY Gemfile $WORKDIR
+RUN bundle install && \
+	bundle update
 
 COPY . .
+
+RUN bundle update
 
 CMD ["./script/run.sh"]
 

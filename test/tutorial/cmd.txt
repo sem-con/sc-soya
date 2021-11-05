@@ -9,11 +9,11 @@ cat person.jsonld | soya similar
 # expected output:
 # 100% Person_v1 - DRI: zQm123
 
-soya pull Person_v1
+soya pull Person_v1 > person_v1.jsonld
 # downloads https://soya.data-container.net/Person_v1 and creates file Person_v1.jsonld
 # output to STDOUT "downloaded Person_v1 - DRI: zQm123"
 
-soya overlays Person_v1
+soya info Person_v1
 # list existing overlays for given base at repo (default: https://soya.data-container.net)
 # write to STDOUT (maybe also option to write as JSON-LD?):
 # Overlays for Person_v1
