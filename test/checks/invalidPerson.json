@@ -12,7 +12,7 @@
         }
       ],
       "termType": "NamedNode",
-      "value": "https://soya.data-container.net/Person2/name",
+      "value": "https://soya.data-container.net/Person_Test/name",
       "severity": {
         "value": "http://www.w3.org/ns/shacl#Violation"
       }
@@ -28,7 +28,7 @@
         }
       ],
       "termType": "NamedNode",
-      "value": "https://soya.data-container.net/Person2/dateOfBirth",
+      "value": "https://soya.data-container.net/Person_Test/dateOfBirth",
       "severity": {
         "value": "http://www.w3.org/ns/shacl#Violation"
       }

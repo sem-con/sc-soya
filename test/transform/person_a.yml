@@ -1,0 +1,11 @@
+meta:
+  name: PersonA
+
+content:
+  base: 
+    - name: PersonA
+      attributes:
+        firstname: String
+        lastname: String
+        dateOfBirth: Date
+        sex: String

@@ -59,21 +59,25 @@ puts "name: " + soya_name.to_s
                 new_items << @record.id
 
 puts "write DRIzed record"
-                dri_item = createDriVersion(item)
-                dri = calculateDri(item)
+                dri_item = updateOnBase(item.deep_dup)
+                dri_item = createDriVersion(dri_item)
+                dri = calculateDri(dri_item.deep_dup)
 puts "DRI: " + dri.to_s
+puts dri_item.to_json
 
-                @record = Store.find_by_dri(dri)
-                if dri.nil? || @record.nil?
-                    @record = Store.new(
+                @record_dri = Store.find_by_dri(dri)
+                if dri.nil? || @record_dri.nil?
+                    @record_dri = Store.new(
                         item: dri_item.to_json, 
                         dri: dri,
-                        soya_name: soya_name)
-                    @record.save
+                        soya_name: soya_name,
+                        soya_dri: dri)
+                    @record_dri.save
                 else
-                    @record.update_attributes(item: dri_item.to_json, soya_name: soya_name)
+                    @record_dri.update_attributes(item: dri_item.to_json, soya_name: soya_name, soya_dri: dri.to_s)
                 end
-                new_items << @record.id
+                @record.update_attributes(soya_dri: dri.to_s)
+                new_items << @record_dri.id
                 
             end
         end

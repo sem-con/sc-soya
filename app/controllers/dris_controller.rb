@@ -18,15 +18,29 @@ class DrisController < ApplicationController
     end
 
     def info
-        history = []
-        Store.where(soya_name: params[:dri].to_s).pluck(:dri, :updated_at).sort_by{|i| i[1]}.reverse.each{|i| history << {"schema": i[0], "date": i[1].strftime("%FT%RZ")} }
-        if history.length > 1
-            history[0], history[1] = history[1], history[0]
-        else
-            Store.where(dri: params[:dri].to_s).pluck(:dri, :updated_at).each{|i| history << {"schema": i[0], "date": i[1].strftime("%FT%RZ")} }
+        soya_dri = Store.find_by_soya_name(params[:dri].to_s).soya_dri rescue ""
+        if soya_dri == ""
+            soya_dri = Store.find_by_dri(params[:dri].to_s).soya_dri rescue ""
         end
+
+        history = []
+        @store = Store.where(soya_name: params[:dri].to_s)
+        @store.pluck(:dri, :updated_at).sort_by{|i| i[1]}.reverse.each{|i| history << {"schema": i[0], "date": i[1].strftime("%FT%RZ")} }
+        if history.length == 0
+            @store = Store.where(dri: params[:dri].to_s)
+            @store.pluck(:dri, :updated_at).each{|i| history << {"schema": i[0], "date": i[1].strftime("%FT%RZ")} }
+        end
+
         overlay = []
-        render json: {"history": history, "overlays": overlay},
+        @store.each do |item|
+            graph = JSON.parse(item.item)["@graph"] rescue []
+            graph.each do |el|
+                if el["@type"] == "OverlayValidation"
+                    overlay << {"type": "Validation", "name": item.dri, "base": el["onBase"]}
+                end
+            end unless graph == []
+        end
+        render json: {"dri": soya_dri, "history": history, "overlays": overlay},
                status: 200
     end
 end

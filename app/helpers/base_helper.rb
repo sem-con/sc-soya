@@ -9,18 +9,47 @@ module BaseHelper
     end
 
     def createDriVersion(input)
-
-puts "Input ======"
-puts input.to_json
-
-
+puts "in createDriVersion"
         base_url = input["@context"]["@base"] rescue ""
+puts "base_url: " + base_url.to_s
         input["@context"].delete("@base") rescue nil
         raw = iterate(JSON.parse(input.to_json_c14n)).to_json_c14n
         dri = Multibases.pack("base58btc", Multihashes.encode(Digest::SHA256.digest(raw), "sha2-256").unpack('C*')).to_s
         raw = JSON.parse(raw)
         raw["@context"]["@base"] = base_url.split('/')[0..-2].join("/") + "/" + dri + "/"
+puts "raw------------"
+puts raw.to_json
+puts "------------"
+
         return raw
+    end
+
+    def getDriFromUrl(url)
+puts "url: " + url
+        response = HTTParty.get(url + "info", timeout: 5)
+puts "response: " + response.to_json
+        # dri = Store.find_by_dri(url.split('/')[-1]).soya_dri rescue nil
+        dri = response.parsed_response["dri"]
+puts "dri: " + dri.to_s
+        if dri.nil? || dri.to_s == ""
+            return url
+        else
+            return url.split('/')[0..-2].join("/") + "/" + dri + "/"
+        end
+    end
+
+    def updateOnBase(input)
+        input.each do |k, v|
+            if k == "onBase" && v.is_a?(String)
+                dri = getDriFromUrl(v)
+                v.replace dri
+            elsif v.is_a?(Hash)
+                updateOnBase v
+            elsif v.is_a?(Array)
+                v.flatten.each { |x| updateOnBase(x) if x.is_a?(Hash) }
+            end
+        end
+        input        
     end
 
     def calculateDri(input)
