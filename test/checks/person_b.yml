@@ -21,7 +21,7 @@ content:
           pattern: "^[A-Za-z ,.'-]+$"
         birthdate:
           cardinality: "1..1"
-          valueRange: "[1900-01-01..*]"                    
+          valueRange: "[1900-01-01..*]"
         gender:
           cardinality: "0..1"
           valueOption:

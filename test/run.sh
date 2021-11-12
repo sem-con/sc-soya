@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-SOYACMD='soya'
-
 # test pushing a YML
 cat checks/person_test.yml | soya init | soya push > tmp.doc
 if ! cmp -s tmp.doc checks/push.doc ; then
@@ -55,12 +53,35 @@ if ! cmp -s tmp.doc checks/mixedPersonClasses.json ; then
 fi
 rm tmp.doc
 
-curl -k -s "https://playground.data-container.net/Person2valid_test" | soya validate Person_Test > tmp.doc
+curl -k -s "https://playground.data-container.net/PersonValid" | soya validate Person_Test > tmp.doc
 if ! cmp -s tmp.doc checks/validPerson.json ; then
 	echo "error: validPerson validation failed"
 	rm tmp.doc
 	exit 1
 else
 	echo "passed: validation layer checks"
+fi
+rm tmp.doc
+
+# test transformation overlay
+cat checks/person_a.yml | soya init | soya push > /dev/null
+cat checks/person_b.yml | soya init | soya push > /dev/null
+cat checks/person_b_jolt.yml | soya init | soya push > /dev/null
+
+curl -k -s https://playground.data-container.net/PersonAinstance | soya transform PersonB | soya validate PersonB > tmp.doc
+if ! cmp -s tmp.doc checks/PersonBjq.json ; then
+	echo "error: transform with jq failed"
+	rm tmp.doc
+	exit 1
+fi
+rm tmp.doc
+
+curl -k -s https://playground.data-container.net/PersonAinstance | soya transform PersonBjolt | soya validate PersonB > tmp.doc
+if ! cmp -s tmp.doc checks/PersonBjolt.json ; then
+	echo "error: transform with jolt failed"
+	rm tmp.doc
+	exit 1
+else
+	echo "passed: transformation layer checks"
 fi
 rm tmp.doc

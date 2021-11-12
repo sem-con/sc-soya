@@ -14,16 +14,65 @@ echo '[{
   "content": {
   "@context": {
     "@version": 1.1,
-    "basePerson":"https://soya.data-container.net/Person2/"
+    "basePerson":"https://soya.data-container.net/PersonA/"
   },
   "@graph":[{
-    "@id": "Person2instance",
-    "@type":"basePerson:Person2",
-    "basePerson:FirstName": "Fajar",
-    "basePerson:LastName": "Ekaputra",
-    "basePerson:Gender": "Male"
+    "@id": "Person1",
+    "@type":"basePerson:PersonA",
+    "basePerson:firstname": "Christoph",
+    "basePerson:lastname": "Fabianek",
+    "basePerson:dateOfBirth": "1977-07-21",
+    "basePerson:sex": "Male"
+  }, {
+    "@id": "Person2",
+    "@type":"basePerson:PersonA",
+    "basePerson:firstname": "Gabriel",
+    "basePerson:lastname": "Unterholzer",
+    "basePerson:dateOfBirth": "1995-11-18",
+    "basePerson:sex": "Male"
   }]
 },
-  "dri": "Person2"
+  "dri": "PersonMulti"
 }]' | curl -k -H "Content-Type: application/json" -d @- \
     -X POST https://playground.data-container.net/api/data
+
+
+
+echo '[{
+  "content": {
+  "@context": {
+    "@version": 1.1,
+    "basePerson":"https://soya.data-container.net/PersonA/"
+  },
+  "@graph":[{
+      "@id": "PersonAinstance",
+      "@type": "basePerson:PersonA",
+      "basePerson:firstname": "Gabriel",
+      "basePerson:lastname": "Unterholzer",
+      "basePerson:dateOfBirth": "1995-11-18",
+      "basePerson:sex": "male"
+    }]
+},
+  "dri": "PersonAinstance"
+}]' | curl -k -H "Content-Type: application/json" -d @- \
+    -X POST https://playground.data-container.net/api/data
+
+
+
+
+{
+  "@context": {
+    "@version": 1.1,
+    "basePerson": "https://soya.data-container.net/PersonA/"
+  },
+  "@graph": [
+    {
+      "@id": "PersonAinstance",
+      "@type": "basePerson:PersonA",
+      "basePerson:firstname": "Gabriel",
+      "basePerson:lastname": "Unterholzer",
+      "basePerson:dateOfBirth": "1995-11-18",
+      "basePerson:sex": "male"
+    }
+  ]
+}
